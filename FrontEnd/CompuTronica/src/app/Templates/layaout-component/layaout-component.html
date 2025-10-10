@@ -1,0 +1,49 @@
+<div class="layout-container d-flex flex-column">
+  <!-- 🔷 Header -->
+  <nav class="navbar d-flex align-items-center justify-content-between px-4 shadow-sm">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-link text-white d-lg-none me-3" (click)="toggleSidebar()">
+        <i class="bi" [ngClass]="sidebarOpen ? 'bi-x-lg' : 'bi-list'" style="font-size:1.5rem;"></i>
+      </button>
+<span class="navbar-brand fw-bold fs-4 brand-title">Computrónica</span>
+    </div>
+    <div class="d-flex align-items-center text-white">
+      <i class="bi bi-person-circle fs-5 me-2"></i>
+      <span class="fw-semibold">{{ userName }}</span>
+    </div>
+  </nav>
+
+  <!-- 🔷 Cuerpo -->
+  <div class="main-body d-flex flex-grow-1">
+    <!-- Sidebar -->
+    <aside class="sidebar shadow-lg" [class.collapsed]="!sidebarOpen">
+      <div class="sidebar-header py-4 text-center">
+        <i class="bi bi-cpu-fill fs-1 text-white"></i>
+      </div>
+
+      <ul class="nav flex-column px-2">
+        <li *ngFor="let item of menuItems" class="nav-item">
+          <a
+            routerLink="{{ item.route }}"
+            routerLinkActive="active"
+            class="nav-link d-flex align-items-center text-white px-3 py-2 rounded-3 mb-1"
+          >
+            <i class="bi me-3 fs-5" [ngClass]="item.icon"></i>
+            <span class="menu-text">{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="mt-auto text-center text-white-50 small py-3">
+        © 2025 Computrónica
+      </div>
+    </aside>
+
+    <!-- Contenido -->
+    <main class="content flex-grow-1 p-4 overflow-auto">
+      <div class="content-inner">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
