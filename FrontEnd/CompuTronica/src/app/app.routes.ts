@@ -1,3 +1,15 @@
 import { Routes } from '@angular/router';
+import { NotFoundComponent } from './Templates/not-found-component/not-found-component';
+import { LoginComponent } from './Component/login-component/login-component';
+import { ChatComponent } from './Component/chat-component/chat-component';
+import { DashBoardCOmponent } from './Component/dash-board-component/dash-board-component';
+import { UsuariosComponent } from './Component/usuarios-component/usuarios-component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', redirectTo: '/DashBoard', pathMatch: 'full' },
+  { path: 'DashBoard', component: DashBoardCOmponent },
+  { path: 'Asignatura', component: LoginComponent },
+  { path: 'Usuarios', component: UsuariosComponent },
+  { path: 'Chat', component: ChatComponent },
+  { path: '**', component: NotFoundComponent } // Ruta para páginas no encontradas
+];

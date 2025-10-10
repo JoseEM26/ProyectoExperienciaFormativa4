@@ -1,0 +1,81 @@
+.loading-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 38, 71, 0.9); /* azul oscuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif;
+}
+
+.loading-box {
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+}
+
+.robot-image {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('https://cdn-icons-png.flaticon.com/512/4712/4712041.png'); /* robot */
+  background-repeat: repeat;
+  background-size: contain;
+  filter: drop-shadow(0 0 6px #4A90E2);
+}
+
+.circle-loader {
+  width: 100%;
+  height: 100%;
+  border: 6px solid rgba(74, 144, 226, 0.2); /* borde suave */
+  border-top: 6px solid #4A90E2; /* azul secundario */
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  box-shadow: 0 0 12px #4A90E2, 0 0 24px rgba(74, 144, 226, 0.5);
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.dot {
+  animation: blink 1.4s infinite;
+  opacity: 0.2;
+}
+
+.dot:nth-child(1) { animation-delay: 0.2s; }
+.dot:nth-child(2) { animation-delay: 0.4s; }
+.dot:nth-child(3) { animation-delay: 0.6s; }
+
+/* ==== Animaciones ==== */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
