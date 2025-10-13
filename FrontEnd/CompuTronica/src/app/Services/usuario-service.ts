@@ -28,4 +28,11 @@ export class UsuarioService {
   }
   cambiarEstado(id: number){
   }
+
+getProfesores(): Observable<Usuario[]> {
+  return this.http.get<Usuario[]>(`${this.url}?rol=profesor`);
+}
+
+
+
 }

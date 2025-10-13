@@ -1,0 +1,51 @@
+<div class="asignaturas-container">
+  <!-- Filtro de búsqueda y botón nueva asignatura -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Buscar por nombre, código o profesor"
+      [(ngModel)]="searchText"
+      (keyup)="onInputChange()"
+    />
+    <button (click)="nuevaAsignatura()">Nueva Asignatura</button>
+  </div>
+
+  <!-- Modal para crear/editar asignatura -->
+  <app-asignatura-form
+    *ngIf="mostrarModal"
+    [asignatura]="asignaturaSeleccionada"
+    (guardar)="onGuardarAsignatura($event)"
+    (cancelar)="onCancelarAsignatura()"
+  ></app-asignatura-form>
+
+  <!-- Mensaje de carga -->
+  <div *ngIf="loading" class="loading">Cargando asignaturas...</div>
+
+  <!-- Grid de tarjetas -->
+  <div class="asignaturas-grid" *ngIf="!loading && lstAsignaturas.length > 0">
+    <div class="asignatura-card" *ngFor="let a of lstAsignaturas">
+      <div class="card-header">
+        <h3>{{ a.nombre }}</h3>
+        <span class="codigo">{{ a.codigoAsignatura }}</span>
+      </div>
+
+      <div class="card-body">
+        <p class="profesor">Profesor: {{ a.profesor?.nombre }} {{ a.profesor?.apellido }}</p>
+        <p class="creditos" *ngIf="a.showInfo">Créditos: {{ a.creditos }}</p>
+        <p class="descripcion" *ngIf="a.showInfo">{{ a.descripcion }}</p>
+      </div>
+
+      <div class="card-footer">
+        <button (click)="toggleInfo(a)">
+          {{ a.showInfo ? 'Ocultar' : 'Ver' }}
+        </button>
+        <button (click)="editarAsignatura(a)">Editar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay resultados -->
+  <div *ngIf="!loading && lstAsignaturas.length === 0" class="no-results">
+    No se encontraron asignaturas.
+  </div>
+</div>
