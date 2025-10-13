@@ -1,4 +1,17 @@
 
+INSERT INTO Asignaturas (codigo_asignatura, nombre, descripcion, creditos, profesor_id) VALUES
+('MAT101', 'Matemática Básica', 'Curso introductorio de matemáticas', 4, 2),
+('FIS101', 'Física I', 'Fundamentos de física clásica', 3, 8),
+('QUI101', 'Química General', 'Principios básicos de química', 3, 5),
+('PROG101', 'Programación I', 'Introducción a la programación en Java', 4, 2),
+('MAT201', 'Álgebra Lineal', 'Vectores, matrices y sistemas de ecuaciones', 3, 2),
+('FIS201', 'Física II', 'Electricidad, magnetismo y óptica', 3, 2),
+('BIO101', 'Biología General', 'Conceptos fundamentales de biología', 3, 5),
+('PROG201', 'Programación Avanzada', 'Estructuras de datos y algoritmos', 4, 3),
+('RED101', 'Redes de Computadoras', 'Conceptos básicos de redes', 3, 3),
+('WEB101', 'Desarrollo Web', 'HTML, CSS y JavaScript', 3, 8);
+
+
 INSERT INTO Usuarios (codigo_institucional, sede, nombre, apellido, correo_institucional, contrasena, tipo, estado)
 VALUES
 ('CI001', 'Sede 1', 'Juan', 'Perez', 'juan.perez@computronica.edu', 'contraseña123', 'estudiante', TRUE),

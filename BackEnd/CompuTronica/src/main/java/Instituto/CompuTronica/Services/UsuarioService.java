@@ -47,6 +47,11 @@ public class UsuarioService {
         }
     }
 
+    public List<Usuarios> getUsuariosPorRol(String rol) {
+        return usuarioRepository.findByTipo(rol); // suponiendo que el campo 'tipo' indica profesor/alumno
+    }
+
+
     // 6. Buscar un usuario por su código institucional (opcional)
     public     Optional<Usuarios>  getUsuariosByCodigoInstitucional(String codigoInstitucional) {
         return usuarioRepository.findByCodigoInstitucional(codigoInstitucional);
