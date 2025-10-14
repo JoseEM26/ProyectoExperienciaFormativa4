@@ -1,15 +1,32 @@
 import { Routes } from '@angular/router';
+import { LayaoutComponent } from './Templates/layaout-component/layaout-component';
 import { NotFoundComponent } from './Templates/not-found-component/not-found-component';
 import { LoginComponent } from './Component/login-component/login-component';
 import { ChatComponent } from './Component/chat-component/chat-component';
 import { DashBoardCOmponent } from './Component/dash-board-component/dash-board-component';
 import { UsuariosComponent } from './Component/usuarios-component/usuarios-component';
+import { AsignaturaComponent } from './Component/asignatura-component/asignatura-component';
+import { authGuard } from './Guards/auth-guard';
+import { authenticateGuardGuard } from './Guards/authenticateGuardGuard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/DashBoard', pathMatch: 'full' },
-  { path: 'DashBoard', component: DashBoardCOmponent },
-  { path: 'Asignatura', component: LoginComponent },
-  { path: 'Usuarios', component: UsuariosComponent },
-  { path: 'Chat', component: ChatComponent },
-  { path: '**', component: NotFoundComponent } // Ruta para páginas no encontradas
+  // 🔐 Login fuera del layout
+  { path: 'login', component: LoginComponent, canActivate: [authenticateGuardGuard] },
+
+  // 🌐 Rutas protegidas dentro del layout
+  {
+    path: '',
+    component: LayaoutComponent,
+    canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'DashBoard', pathMatch: 'full' },
+      { path: 'DashBoard', component: DashBoardCOmponent, data: { title: 'Dashboard' } },
+      { path: 'Asignatura', component: AsignaturaComponent, data: { title: 'Asignaturas' } },
+      { path: 'Usuarios', component: UsuariosComponent, data: { title: 'Usuarios' } },
+      { path: 'Chat', component: ChatComponent, data: { title: 'Chat' } },
+    ]
+  },
+
+  // 🚫 Ruta por defecto o no encontrada
+  { path: '**', component: NotFoundComponent }
 ];

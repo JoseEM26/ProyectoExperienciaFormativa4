@@ -51,4 +51,17 @@ public class UsuarioService {
     public     Optional<Usuarios>  getUsuariosByCodigoInstitucional(String codigoInstitucional) {
         return usuarioRepository.findByCodigoInstitucional(codigoInstitucional);
     }
+   // 7. Login , validar credenciales
+    public Optional<Usuarios> login(String codigoInstitucional, String contrasena) {
+        Optional<Usuarios> usuarioOpt = usuarioRepository.findByCodigoInstitucional(codigoInstitucional);
+
+        if (usuarioOpt.isPresent()) {
+            Usuarios usuario = usuarioOpt.get();
+            if (usuario.getContrasena().equals(contrasena)) {
+                return usuarioOpt;
+            }
+        }
+
+        return Optional.empty();
+    }
 }
