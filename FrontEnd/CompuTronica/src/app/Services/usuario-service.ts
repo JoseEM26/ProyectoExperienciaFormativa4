@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usuario } from '../Model/usuario-model/usuario-model';
+import { Usuario } from '../Model/usuario-model';
 import { Observable } from 'rxjs';
+import { UsuarioCreate } from '../Model/usuario-model-create';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +23,9 @@ export class UsuarioService {
     return this.http.get<Usuario>(this.url + "/"+codigoInstitucional);
   }
 
-  createUsuario(usuario: Usuario): Observable<Usuario> {
+  createUsuario(usuario: UsuarioCreate) {
     console.log('CREATE_USUARIO');
-    return this.http.post<Usuario>(this.url, usuario);
+    return this.http.post<UsuarioCreate>(this.url, usuario);
   }
   cambiarEstado(id: number){
   }

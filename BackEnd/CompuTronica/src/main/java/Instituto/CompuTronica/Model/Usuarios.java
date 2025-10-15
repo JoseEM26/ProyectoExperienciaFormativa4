@@ -38,7 +38,6 @@ public class Usuarios {
     private String correoInstitucional;
 
     @Column(name = "contrasena", nullable = false, length = 255)
-    @JsonIgnore
     private String contrasena;
 
     @Column(name = "tipo", nullable = false)

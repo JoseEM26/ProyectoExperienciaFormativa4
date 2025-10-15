@@ -3,7 +3,7 @@ import { AsignaturasService } from '../../Services/asignatura-service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
-import { Asignatura } from '../../Model/asignatura-model/asignatura-model-module';
+import { Asignatura } from '../../Model/asignatura-model-module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';

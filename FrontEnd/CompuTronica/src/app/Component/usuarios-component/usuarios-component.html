@@ -9,7 +9,7 @@
         [(ngModel)]="searchText"
         (keyup)="onInputChange()"
       />
-      <a routerLink="/formUsuario" class="btn btn-nuevo">
+      <a routerLink="/usuarioForm" class="btn btn-nuevo">
         <i class="fas fa-plus me-1"></i> Nuevo
       </a>
     </div>
@@ -68,7 +68,7 @@
           </td>
         </ng-container>
 
-        <!-- Acciones -->
+        <!-- Acciones
         <ng-container matColumnDef="Acciones">
           <th mat-header-cell *matHeaderCellDef> Acciones </th>
           <td mat-cell *matCellDef="let element">
@@ -76,13 +76,13 @@
               mat-icon-button
               color="primary"
               aria-label="Editar usuario"
-              [routerLink]="['/formUsuario', element.id]"
+[routerLink]="['/usuarioForm', element.codigoInstitucional]"
               title="Editar"
             >
               <mat-icon>edit</mat-icon>
             </button>
           </td>
-        </ng-container>
+        </ng-container> -->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
