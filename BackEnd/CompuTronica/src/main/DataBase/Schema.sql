@@ -43,4 +43,14 @@ CREATE TABLE Calificaciones (
     FOREIGN KEY (asignatura_id) REFERENCES Asignaturas(id)
 );
 
+-- Tabla del chat
+DROP TABLE IF EXISTS ChatMessages;
 
+CREATE TABLE ChatMessages (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    sender VARCHAR(255) NOT NULL,       -- Nombre o código del usuario que envía
+    content TEXT NOT NULL,              -- Contenido del mensaje
+    time VARCHAR(20) NOT NULL,          -- Hora del mensaje (ej. '14:32:10')
+    usuario_id INT,                     -- Relación opcional con la tabla Usuarios
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id)
+);
