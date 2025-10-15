@@ -30,11 +30,13 @@
     "@angular/material": "^20.2.8",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "@ng-select/ng-select": "^20.3.1",
     "@stomp/stompjs": "^7.2.1",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "rxjs": "~7.8.0",
     "sockjs-client": "^1.6.1",
+    "sweetalert2": "^11.26.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

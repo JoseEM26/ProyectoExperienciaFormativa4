@@ -1,0 +1,9 @@
+.card {
+  border-radius: 10px;
+}
+
+.custom-ng-select ::ng-deep .ng-select-container {
+  border-radius: 5px;
+  border-color: #ced4da;
+  min-height: 38px;
+}

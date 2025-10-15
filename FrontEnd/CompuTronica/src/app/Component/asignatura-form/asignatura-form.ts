@@ -1,12 +1,12 @@
 // asignatura-form.component.ts
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { Asignatura } from '../../Model/asignatura-model/asignatura-model-module';
+import { Asignatura } from '../../Model/asignatura-model-module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { UsuarioService } from '../../Services/usuario-service';
-import { Usuario } from '../../Model/usuario-model/usuario-model';
+import { Usuario } from '../../Model/usuario-model';
 
 @Component({
   selector: 'app-asignatura-form',
