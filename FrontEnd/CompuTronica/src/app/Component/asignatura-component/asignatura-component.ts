@@ -20,7 +20,6 @@ import { AsignaturaFormComponent } from '../asignatura-form/asignatura-form';
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,

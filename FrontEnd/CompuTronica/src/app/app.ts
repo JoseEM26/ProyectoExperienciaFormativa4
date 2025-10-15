@@ -4,7 +4,7 @@ import { LayaoutComponent } from "./Templates/layaout-component/layaout-componen
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LayaoutComponent],
+  imports: [ LayaoutComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
