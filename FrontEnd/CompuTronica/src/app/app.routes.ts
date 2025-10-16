@@ -26,7 +26,6 @@ export const routes: Routes = [
       { path: 'Chat', component: ChatComponent, data: { title: 'Chat' } },
     ]
   },
-
   // 🚫 Ruta por defecto o no encontrada
   { path: '**', component: NotFoundComponent }
 ];
