@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { LayaoutComponent } from './Templates/layaout-component/layaout-component';
 import { NotFoundComponent } from './Templates/not-found-component/not-found-component';
 import { LoginComponent } from './Component/login-component/login-component';
-import { ChatComponent } from './Component/chat-component/chat-component';
 import { DashBoardCOmponent } from './Component/dash-board-component/dash-board-component';
 import { UsuariosComponent } from './Component/usuarios-component/usuarios-component';
+import { AsignaturasComponent } from './Component/asignatura-component/asignatura-component';
+import { RegistroUsuario } from './Component/usuario-form-component/usuario-form';
 import { AsignaturaComponent } from './Component/asignatura-component/asignatura-component';
 import { authGuard } from './Guards/auth-guard';
 import { authenticateGuardGuard } from './Guards/authenticateGuardGuard';
@@ -28,4 +28,13 @@ export const routes: Routes = [
   },
   // 🚫 Ruta por defecto o no encontrada
   { path: '**', component: NotFoundComponent }
+  { path: '', redirectTo: '/DashBoard', pathMatch: 'full' },
+  { path: 'DashBoard', component: DashBoardCOmponent },
+  { path: 'Asignatura', component: AsignaturasComponent },
+  { path: 'Usuarios', component: UsuariosComponent },
+
+  { path: 'usuarioForm', component: RegistroUsuario },
+  { path: 'usuarioForm/:codigoInstitucional', component: RegistroUsuario },
+
+  { path: '**', component: NotFoundComponent } // Ruta para páginas no encontradas
 ];

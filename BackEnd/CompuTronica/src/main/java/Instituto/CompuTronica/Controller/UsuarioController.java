@@ -20,14 +20,20 @@ public class UsuarioController {
 
     // ✔️ Devolver solo la lista de usuarios, sin Response<>
     @GetMapping
-    public ResponseEntity<List<Usuarios>> getAllUsuarios() {
+    public ResponseEntity<List<Usuarios>> getAllUsuarios(@RequestParam(required = false) String rol) {
         try {
-            List<Usuarios> usuarios = usuarioService.getAllUsuarios();
+            List<Usuarios> usuarios;
+            if (rol != null) {
+                usuarios = usuarioService.getUsuariosPorRol(rol);
+            } else {
+                usuarios = usuarioService.getAllUsuarios();
+            }
             return ResponseEntity.ok(usuarios);
         } catch (Exception e) {
-            return ResponseEntity.status(500).build(); // sin cuerpo
+            return ResponseEntity.status(500).build();
         }
     }
+
 
     // ✔️ Devolver directamente PerfilDTO
     @GetMapping("/codigo/{codigoInstitucional}")
@@ -89,4 +95,5 @@ public class UsuarioController {
 
         return ResponseEntity.ok(perfilDTO);
     }
+
 }

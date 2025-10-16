@@ -10,7 +10,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from '../../Templates/loading-component/loading-component';
 import { RouterLink } from '@angular/router';
-import { Usuario } from '../../Model/usuario-model/usuario-model';
+import { Usuario } from '../../Model/usuario-model';
 
 @Component({
   selector: 'app-usuarios-component',
@@ -34,7 +34,7 @@ export class UsuariosComponent implements OnInit {
   lstUsuarios: Usuario[] = [];
   loading: boolean = false;
 
-  displayedColumns: string[] = ['id', 'codigoInstitucional', 'nombreCompleto', 'correoInstitucional', 'tipo', 'estado', 'Acciones'];
+  displayedColumns: string[] = ['id', 'codigoInstitucional', 'nombreCompleto', 'correoInstitucional', 'tipo', 'estado'  ];
   ListUsuarioDataSource = new MatTableDataSource<Usuario>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   searchText: string = '';

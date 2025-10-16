@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChatComponent } from './chat-component';
+import { AsignaturaFormComponent  } from './asignatura-form';
 
-describe('ChatComponent', () => {
-  let component: ChatComponent;
-  let fixture: ComponentFixture<ChatComponent>;
+describe('AsignaturaForm', () => {
+  let component: AsignaturaFormComponent ;
+  let fixture: ComponentFixture<AsignaturaFormComponent >;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChatComponent]
+      imports: [AsignaturaFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ChatComponent);
+    fixture = TestBed.createComponent(AsignaturaFormComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
