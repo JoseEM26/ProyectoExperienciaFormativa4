@@ -1,0 +1,91 @@
+/* Contenedor general */
+.asignaturas-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #E6F0FA; /* azul muy suave para fondo */
+}
+
+/* Input de búsqueda */
+.search-bar input {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #4A90E2; /* Azul secundario */
+  outline: none;
+  transition: 0.3s;
+  color: #0A2647; /* Azul oscuro para texto */
+  background-color: #FFFFFF; /* input blanco para contraste */
+}
+.search-bar input:focus {
+  border-color: #1D4E89; /* Azul principal */
+  box-shadow: 0 0 8px rgba(29,78,137,0.3);
+}
+
+/* Grid de tarjetas */
+.asignaturas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjeta de asignatura */
+.asignatura-card {
+  background-color: #FFFFFF; /* tarjeta blanca para destacar */
+  border: 1px solid #1D4E89;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.asignatura-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+/* Header de la tarjeta */
+.card-header h3 {
+  color: #0A2647; /* Azul oscuro */
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card-header .codigo {
+  color: #00A6A6; /* Azul verdoso */
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Cuerpo de la tarjeta */
+.card-body p {
+  margin: 6px 0;
+  color: #A6A6A6;
+  font-size: 0.9rem;
+}
+
+/* Botón “Ver/Ocultar” */
+.card-footer button {
+  background: linear-gradient(90deg, #1D4E89, #4A90E2);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-footer button:hover {
+  background: linear-gradient(90deg, #4A90E2, #1D4E89);
+  color: #fff;
+}
+
+/* Mensaje de “no hay resultados” */
+.no-results {
+  text-align: center;
+  color: #A6A6A6;
+  font-weight: 500;
+  padding: 20px;
+  font-size: 1rem;
+}

@@ -1,0 +1,72 @@
+/* Fondo general limpio */
+body, html {
+  background-color: #f8f9fa; /* fondo muy suave, casi blanco */
+}
+
+/* Input de filtro */
+.input-bonito {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #4a90e2;
+  outline: none;
+  transition: 0.3s;
+  color: #0a2647;
+}
+.input-bonito:focus {
+  border-color: #1d4e89;
+  box-shadow: 0 0 8px rgba(29,78,137,0.3);
+}
+
+/* Botón “Nuevo” */
+.btn-nuevo {
+  background: linear-gradient(90deg, #1d4e89, #4a90e2);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-nuevo:hover {
+  background: linear-gradient(90deg, #4a90e2, #1d4e89);
+  color: #fff;
+}
+
+/* Tabla */
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.custom-table th {
+  background-color: #1d4e89;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.custom-table td {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 12px;
+}
+
+.custom-table tr:hover td {
+  background-color: #1a3f70;
+}
+
+/* Slide toggle */
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #1d4e89 !important;
+}
+
+/* Paginador minimalista */
+.mat-paginator {
+  margin-top: 8px;
+}
+.mat-paginator .mat-button {
+  display: none; /* ocultamos first/last buttons */
+}

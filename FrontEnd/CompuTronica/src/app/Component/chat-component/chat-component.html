@@ -1,146 +1,25 @@
-<div class="chat-container">
-  <!-- Contacts List -->
-  <div class="contacts-sidebar">
-    <!-- Search Bar -->
-    <div class="search-container">
-      <div class="search-wrapper">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"></circle>
-          <path d="m21 21-4.35-4.35"></path>
-        </svg>
-        <input 
-          type="text" 
-          placeholder="Buscar conversación..."
-          class="search-input"
-          (input)="updateSearchQuery($any($event.target).value)"
-        />
-      </div>
-    </div>
+<div class="chat-wrapper">
+  <div class="chat-header">
+    <h2> Chat Institucional</h2>
+    <p>Chatea en tiempo real con otros estudiantes de Computrónica</p>
+  </div>
 
-    <!-- Contacts List -->
-    <div class="contacts-list">
-      @for (contact of filteredContacts; track contact.id) {
-        <div 
-          class="contact-item"
-          [class.active]="selectedChat() === contact.id"
-          (click)="selectChat(contact.id)"
-        >
-          <div class="contact-avatar-wrapper">
-            <div class="contact-avatar">{{ contact.avatar }}</div>
-            @if (contact.online) {
-              <div class="online-indicator"></div>
-            }
-          </div>
-          <div class="contact-info">
-            <div class="contact-header">
-              <h3 class="contact-name">{{ contact.name }}</h3>
-              <span class="contact-time">{{ contact.time }}</span>
-            </div>
-            <div class="contact-footer">
-              <p class="contact-message">{{ contact.lastMessage }}</p>
-              @if (contact.unread > 0) {
-                <span class="unread-badge">{{ contact.unread }}</span>
-              }
-            </div>
-          </div>
-        </div>
-      }
+  <div class="chat-body" id="chatBody">
+    <div class="message" *ngFor="let msg of messages">
+      <div class="message-sender">{{ msg.sender }}</div>
+      <div class="message-content">{{ msg.content }}</div>
+      <div class="message-time">{{ msg.time }}</div>
     </div>
   </div>
 
-  <!-- Chat Area -->
-  <div class="chat-area">
-    @if (selectedChat()) {
-      <!-- Chat Header -->
-      <div class="chat-header">
-        <div class="chat-header-info">
-          <div class="header-avatar-wrapper">
-            <div class="header-avatar">{{ currentContact?.avatar }}</div>
-            @if (currentContact?.online) {
-              <div class="online-indicator"></div>
-            }
-          </div>
-          <div>
-            <h3 class="header-name">{{ currentContact?.name }}</h3>
-            <p class="header-status">{{ currentContact?.online ? 'En línea' : 'Desconectado' }}</p>
-          </div>
-        </div>
-        <div class="chat-header-actions">
-          <button class="icon-button" title="Llamar">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          </button>
-          <button class="icon-button" title="Más opciones">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="12" cy="5" r="1"></circle>
-              <circle cx="12" cy="19" r="1"></circle>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Messages Area -->
-      <div class="messages-area">
-        @for (msg of currentMessages; track msg.id) {
-          <div class="message-wrapper" [class.message-me]="msg.sender === 'me'">
-            <div class="message-bubble" [class.bubble-me]="msg.sender === 'me'">
-              <p class="message-text">{{ msg.text }}</p>
-              <p class="message-time">{{ msg.time }}</p>
-            </div>
-          </div>
-        }
-      </div>
-
-      <!-- Input Area -->
-      <div class="input-area">
-        <button class="icon-button" title="Adjuntar">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
-          </svg>
-        </button>
-        <div class="input-wrapper">
-          <input 
-            type="text" 
-            placeholder="Escribe un mensaje..."
-            class="message-input"
-            [value]="message()"
-            (input)="updateMessage($any($event.target).value)"
-            (keypress)="onKeyPress($event)"
-          />
-        </div>
-        @if (message().trim()) {
-          <button class="send-button" (click)="sendMessage()" title="Enviar">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-          </button>
-        } @else {
-          <!-- Este es solo decoracion-->
-          <button class="icon-button" title="Audio">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-              <line x1="12" y1="19" x2="12" y2="23"></line>
-              <line x1="8" y1="23" x2="16" y2="23"></line>
-            </svg>
-          </button>
-        }
-      </div>
-    } @else {
-      <!-- Empty State -->
-      <div class="empty-state">
-        <div class="empty-icon">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </div>
-        <h3 class="empty-title">Computrónica Chat</h3>
-        <p class="empty-text">Selecciona una conversación</p>
-      </div>
-    }
+  <div class="chat-footer">
+    <input
+      type="text"
+      [(ngModel)]="messageInput"
+      placeholder="Escribe un mensaje..."
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()">Enviar</button>
   </div>
 </div>
 

@@ -14,7 +14,7 @@ CREATE TABLE Usuarios (
     apellido VARCHAR(255) NOT NULL,  -- Apellido del usuario
     correo_institucional VARCHAR(255) NOT NULL,  -- Apellido del usuario
     contrasena VARCHAR(255) NOT NULL,  -- Contraseña del usuario
-    tipo ENUM('estudiante', 'profesor', 'administrativo') NOT NULL,  -- Tipo de usuario
+    tipo VARCHAR(255) NOT NULL,  -- Tipo de usuario
     estado BOOLEAN DEFAULT TRUE NOT NULL  -- Estado del usuario (activo por defecto)
 );
 
