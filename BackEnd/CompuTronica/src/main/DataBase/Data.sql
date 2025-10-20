@@ -38,7 +38,7 @@ VALUES
 -- ======================================
 -- 🔹 4. CHAT MESSAGES
 -- ======================================
-INSERT INTO ChatMessages (sender, content, time, usuario_id)
+INSERT INTO chat_messages (sender, content, time, usuario_id)
 VALUES
 ('Carlos Ramírez', 'Buenos días clase, recuerden entregar su práctica 2.', '08:45:10', 1),
 ('Luis Pérez', 'Profe, una consulta sobre el trabajo.', '08:46:32', 3),
@@ -47,7 +47,6 @@ VALUES
 ('Carlos Ramírez', 'Sí, envíenla a mi correo institucional antes del viernes.', '08:49:02', 1),
 ('Javier Castro', 'Gracias profe, entendido.', '08:50:40', 5),
 ('Rosa Villanueva', 'Recordatorio: habrá corte de red en la sede central mañana.', '15:12:15', 6);
-USE Computronica;
 
 -- ======================================
 -- 🔹 1. USUARIOS
@@ -84,15 +83,3 @@ VALUES
 (3, 3, 'Parcial', 18.00),
 (3, 3, 'Final', 19.00);
 
--- ======================================
--- 🔹 4. CHAT MESSAGES
--- ======================================
-INSERT INTO ChatMessages (sender, content, time, usuario_id)
-VALUES
-('Carlos Ramírez', 'Buenos días clase, recuerden entregar su práctica 2.', '08:45:10', 1),
-('Luis Pérez', 'Profe, una consulta sobre el trabajo.', '08:46:32', 3),
-('Carlos Ramírez', 'Claro Luis, dime tu duda.', '08:47:05', 1),
-('María Gómez', 'Profe, ¿la práctica se entrega por correo?', '08:48:20', 4),
-('Carlos Ramírez', 'Sí, envíenla a mi correo institucional antes del viernes.', '08:49:02', 1),
-('Javier Castro', 'Gracias profe, entendido.', '08:50:40', 5),
-('Rosa Villanueva', 'Recordatorio: habrá corte de red en la sede central mañana.', '15:12:15', 6);
