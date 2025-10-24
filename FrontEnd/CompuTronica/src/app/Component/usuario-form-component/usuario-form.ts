@@ -1,19 +1,21 @@
+import Swal from 'sweetalert2';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 import { UsuarioCreate } from './../../Model/usuario-model-create';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-import { NgSelectComponent } from "@ng-select/ng-select";
-import Swal from 'sweetalert2';
+
 import { LoadingComponent } from '../../Templates/loading-component/loading-component';
 import { UsuarioService } from '../../Services/usuario-service';
 
 @Component({
   selector: 'app-usuario-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, NgSelectComponent, LoadingComponent],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, NgSelectModule, LoadingComponent],
   templateUrl: './usuario-form.html',
-  styleUrl: './usuario-form.css'
+  styleUrls: ['./usuario-form.css']
 })
 export class RegistroUsuario implements OnInit {
   registroUsuario!: FormGroup;
@@ -40,7 +42,7 @@ export class RegistroUsuario implements OnInit {
       sede: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      contrasena: ['', this.esEdicion ? [] : [Validators.required, Validators.minLength(6)]], // 🔹 contraseña
+      contrasena: ['', this.esEdicion ? [] : [Validators.required, Validators.minLength(6)]],
       correoInstitucional: ['', [Validators.required, Validators.email]],
       tipo: ['', Validators.required],
       estado: [true]
@@ -53,7 +55,7 @@ export class RegistroUsuario implements OnInit {
         this.esEdicion = true;
         this.codigoInstitucional = codigoParam;
         this.cargarUsuario(this.codigoInstitucional);
-        this.registroUsuario.get('contrasena')?.clearValidators(); // No requerir en edición
+        this.registroUsuario.get('contrasena')?.clearValidators();
         this.registroUsuario.get('contrasena')?.updateValueAndValidity();
       }
     });
