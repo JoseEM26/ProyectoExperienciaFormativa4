@@ -1,0 +1,25 @@
+<div class="chat-wrapper">
+  <div class="chat-header">
+    <h2> Chat Institucional</h2>
+    <p>Chatea en tiempo real con otros estudiantes de Computrónica</p>
+  </div>
+
+  <div class="chat-body" id="chatBody">
+    <div class="message" *ngFor="let msg of messages">
+      <div class="message-sender">{{ msg.sender }}</div>
+      <div class="message-content">{{ msg.content }}</div>
+      <div class="message-time">{{ msg.time }}</div>
+    </div>
+  </div>
+
+  <div class="chat-footer">
+    <input
+      type="text"
+      [(ngModel)]="messageInput"
+      placeholder="Escribe un mensaje..."
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()">Enviar</button>
+  </div>
+</div>
+

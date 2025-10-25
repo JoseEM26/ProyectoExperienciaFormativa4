@@ -44,9 +44,9 @@ CREATE TABLE Calificaciones (
 );
 
 -- Tabla del chat
-DROP TABLE IF EXISTS ChatMessages;
+DROP TABLE IF EXISTS chat_messages;
 
-CREATE TABLE ChatMessages (
+CREATE TABLE chat_messages (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     sender VARCHAR(255) NOT NULL,       -- Nombre o código del usuario que envía
     content TEXT NOT NULL,              -- Contenido del mensaje
