@@ -1,1 +1,73 @@
-<p>login-component works!</p>
+<div class="login-wrapper">
+  <div class="login-card">
+    <!-- Logo -->
+    <img
+      src="https://educacioncontinua.pucp.edu.pe/wp-content/uploads/2024/09/logo-educacion.svg"
+      alt="Logo Instituto"
+      class="logo"
+    />
+
+    <h3>Instituto Computrónica</h3>
+
+    <!-- Formulario funcional -->
+    <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+      <!-- Código Institucional -->
+      <div class="mb-3">
+        <label for="codigo" class="form-label">Código Institucional</label>
+        <input
+          type="text"
+          id="codigo"
+          class="form-control"
+          placeholder="Ingrese su código"
+          [(ngModel)]="codigoInstitucional"
+          name="codigoInstitucional"
+          [disabled]="loading"
+          required
+        />
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-3 position-relative">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          [type]="hidePassword ? 'password' : 'text'"
+          id="password"
+          class="form-control"
+          placeholder="Ingrese su contraseña"
+          [(ngModel)]="contrasena"
+          name="contrasena"
+          [disabled]="loading"
+          required
+        />
+        <button
+          type="button"
+          class="btn-toggle-password"
+          (click)="togglePasswordVisibility()"
+          [disabled]="loading"
+        >
+          <i [class]="hidePassword ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+        </button>
+      </div>
+
+      <!-- Mensaje de error -->
+      <div *ngIf="errorMessage" class="alert alert-danger text-center py-2">
+        <i class="fas fa-exclamation-circle me-2"></i>{{ errorMessage }}
+      </div>
+
+      <!-- Botón de login -->
+      <button type="submit" class="btn btn-login" [disabled]="loading">
+        <span *ngIf="!loading">
+          <i class="fas fa-sign-in-alt me-2"></i> Iniciar Sesión
+        </span>
+        <span *ngIf="loading">
+          <i class="fas fa-spinner fa-spin me-2"></i> Ingresando...
+        </span>
+      </button>
+    </form>
+
+    <!-- Footer -->
+    <div class="footer-text">
+      <p>© 2025 Instituto Computrónica</p>
+    </div>
+  </div>
+</div>

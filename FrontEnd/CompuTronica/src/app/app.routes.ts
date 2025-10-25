@@ -1,20 +1,35 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './Templates/not-found-component/not-found-component';
 import { LoginComponent } from './Component/login-component/login-component';
-import { DashBoardCOmponent } from './Component/dash-board-component/dash-board-component';
 import { UsuariosComponent } from './Component/usuarios-component/usuarios-component';
 import { AsignaturasComponent } from './Component/asignatura-component/asignatura-component';
 import { RegistroUsuario } from './Component/usuario-form-component/usuario-form';
 import { ChatComponent } from './Component/chat-component/chat-component';
+import { authGuard } from './Guards/auth-guard';
+import { authenticateGuardGuard } from './Guards/authenticateGuardGuard';
+import { DashBoardCOmponent } from './Component/dash-board-component/dash-board-component';
+import { LayaoutComponent } from './Templates/layaout-component/layaout-component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/DashBoard', pathMatch: 'full' },
-  { path: 'DashBoard', component: DashBoardCOmponent },
-  { path: 'Asignatura', component: AsignaturasComponent },
-  { path: 'Usuarios', component: UsuariosComponent },
-  { path: 'Chat', component: ChatComponent },
-  { path: 'usuarioForm', component: RegistroUsuario },
-  { path: 'usuarioForm/:codigoInstitucional', component: RegistroUsuario },
+  // 🔐 Login fuera del layout
+  { path: 'login', component: LoginComponent, canActivate: [authenticateGuardGuard] },
 
-  { path: '**', component: NotFoundComponent } // Ruta para páginas no encontradas
+  // 🌐 Rutas protegidas dentro del layout
+  {
+    path: '',
+    component: LayaoutComponent,
+    canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
+      { path: 'Dashboard', component: DashBoardCOmponent, data: { title: 'Dashboard' } },
+      { path: 'Asignatura', component: AsignaturasComponent, data: { title: 'Asignaturas' } },
+      { path: 'Usuarios', component: UsuariosComponent, data: { title: 'Usuarios' } },
+      { path: 'Chat', component: ChatComponent, data: { title: 'Chat' } },
+      { path: 'usuarioForm', component: RegistroUsuario },
+      { path: 'usuarioForm/:codigoInstitucional', component: RegistroUsuario },
+    ]
+  },
+
+  // 🚫 Ruta por defecto o no encontrada
+  { path: '**', component: NotFoundComponent }
 ];
