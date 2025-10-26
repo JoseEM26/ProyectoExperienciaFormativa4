@@ -34,6 +34,9 @@ getProfesores(): Observable<Usuario[]> {
   return this.http.get<Usuario[]>(`${this.url}?rol=profesor`);
 }
 
+getEstudiantes(): Observable<Usuario[]> {
+  return this.http.get<Usuario[]>(`${this.url}?rol=estudiante`);
+}
 
 
 }

@@ -17,6 +17,7 @@ userName = 'Juan Pérez';
     { label: 'DashBoard', route: '/DashBoard', icon: 'bi-speedometer2' },
     { label: 'Usuarios', route: '/Usuarios', icon: 'bi-people' },
     { label: 'Asignatura', route: '/Asignatura', icon: 'bi-people' },
+    { label: 'Calificaciones', route: '/Calificaciones', icon: 'bi-people' },
     { label: 'Chat', route: '/Chat', icon: 'bi-journal-text' },
   ];
 

@@ -1,0 +1,30 @@
+.modal-container {
+  background-color: #f8f9fa; /* fondo claro */
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1d4e89;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  width: 48%;
+  font-weight: 600;
+}

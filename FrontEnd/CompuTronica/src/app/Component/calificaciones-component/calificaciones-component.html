@@ -1,1 +1,68 @@
-<p>calificaciones-component works!</p>
+<div class="top-bar">
+  <input type="text" [(ngModel)]="searchText" (input)="onInputChange()" placeholder="Buscar estudiante..." class="input-busqueda" />
+  <button mat-raised-button color="primary" (click)="abrirCrearCalificacion()">Nueva Calificación</button>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="custom-table">
+
+  <!-- Estudiante -->
+  <ng-container matColumnDef="estudiante">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Estudiante </th>
+    <td mat-cell *matCellDef="let cal"> {{ cal.estudiante }} </td>
+  </ng-container>
+
+  <!-- Asignatura -->
+<ng-container matColumnDef="asignatura">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header> Asignatura </th>
+  <td mat-cell *matCellDef="let cal"> {{ cal.asignatura }} </td>
+</ng-container>
+
+
+  <!-- Parcial -->
+  <ng-container matColumnDef="parcial">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Parcial </th>
+    <td mat-cell *matCellDef="let cal">
+  <span *ngIf="cal.parcial">{{ cal.parcial }}</span>
+  <button *ngIf="cal.ids.parcial != null" mat-icon-button color="warn" (click)="confirmarEliminar(cal.ids.parcial, cal.estudiante)">
+    <mat-icon>delete</mat-icon>
+  </button>
+<button *ngIf="cal.ids.parcial" mat-icon-button color="accent" (click)="abrirEditarCalificacion(cal.ids.parcial)">
+  <mat-icon>edit</mat-icon>
+</button>
+</td>
+  </ng-container>
+
+  <!-- Final -->
+  <ng-container matColumnDef="final">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Final </th>
+    <td mat-cell *matCellDef="let cal">
+  <span *ngIf="cal.final">{{ cal.final }}</span>
+  <button *ngIf="cal.ids.final != null" mat-icon-button color="warn" (click)="confirmarEliminar(cal.ids.final, cal.estudiante)">
+    <mat-icon>delete</mat-icon>
+  </button>
+ <button *ngIf="cal.ids.final" mat-icon-button color="accent" (click)="abrirEditarCalificacion(cal.ids.final)">
+  <mat-icon>edit</mat-icon>
+</button>
+  </ng-container>
+
+  <!-- Nota Final Promedio -->
+  <ng-container matColumnDef="resultado">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nota Final </th>
+    <td mat-cell *matCellDef="let cal">
+      <span class="nota-box"
+            [ngClass]="{
+              'nota-roja': getNotaPromedio(cal) < 13,
+              'nota-amarilla': getNotaPromedio(cal) >= 13 && getNotaPromedio(cal) <= 16,
+              'nota-verde': getNotaPromedio(cal) >= 17
+            }">
+        {{ getNotaPromedio(cal) }}
+      </span>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
