@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router ,RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layaout-component',
@@ -21,7 +21,37 @@ userName = 'Juan Pérez';
     { label: 'Chat', route: '/Chat', icon: 'bi-journal-text' },
   ];
 
-  toggleSidebar() {
+ constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.cargarUsuarioActual();
+  }
+
+  cargarUsuarioActual(): void {
+    const usuarioStr = sessionStorage.getItem('usuario');
+    if (usuarioStr) {
+      try {
+        const usuario = JSON.parse(usuarioStr);
+        this.userName = `${usuario.nombre} ${usuario.apellido}`;
+
+      } catch (error) {
+        console.error('Error al cargar usuario:', error);
+        this.logout();
+      }
+    } else {
+       this.router.navigate(['/login']);
+    }
+  }
+
+  toggleSidebar(): void {
     this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  logout(): void {
+    const confirmar = confirm('¿Estás seguro que deseas cerrar sesión?');
+    if (confirmar) {
+      sessionStorage.clear();
+      this.router.navigate(['/login']);
+    }
   }
 }

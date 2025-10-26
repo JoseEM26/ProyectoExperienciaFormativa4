@@ -1,5 +1,6 @@
 package Instituto.CompuTronica.Controller;
 
+import Instituto.CompuTronica.DTO.LoginDTO;
 import Instituto.CompuTronica.DTO.PerfilDTO;
 import Instituto.CompuTronica.Model.Response;
 import Instituto.CompuTronica.Model.Usuarios;
@@ -71,6 +72,28 @@ public class UsuarioController {
         } catch (Exception e) {
             return ResponseEntity.status(500).build(); // Error interno
         }
+    }
+    // Login
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDTO request) {
+        Optional<Usuarios> usuarioOpt = usuarioService.login(request.getCodigoInstitucional(), request.getContrasena());
+
+        if (!usuarioOpt.isPresent()) {
+            return ResponseEntity.status(401).body("Credenciales incorrectas");
+        }
+
+        Usuarios usuario = usuarioOpt.get();
+
+        PerfilDTO perfilDTO = new PerfilDTO();
+        perfilDTO.setCodigoInstitucional(usuario.getCodigoInstitucional());
+        perfilDTO.setSede(usuario.getSede());
+        perfilDTO.setNombre(usuario.getNombre());
+        perfilDTO.setApellido(usuario.getApellido());
+        perfilDTO.setCorreoInstitucional(usuario.getCorreoInstitucional());
+        perfilDTO.setTipo(usuario.getTipo());
+        perfilDTO.setEstado(usuario.isEstado());
+
+        return ResponseEntity.ok(perfilDTO);
     }
 
 }

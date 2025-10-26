@@ -1,0 +1,104 @@
+/* Fondo general */
+.login-wrapper {
+  height: 100vh;
+  background: url('https://educacioncontinua.pucp.edu.pe/wp-content/uploads/2025/09/Ruta-N-jpg.jpg')
+    no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Tarjeta del login */
+.login-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 35px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+  color: #333;
+  text-align: center;
+}
+
+/* Logo circular */
+.logo {
+  display: block;
+  margin: 0 auto 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+.login-card h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+/* Etiquetas */
+label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  text-align: left;
+  display: block;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+}
+
+/* Botón principal */
+.btn-login {
+  background: linear-gradient(135deg, #6c63ff, #4e4b7e);
+  color: white;
+  border-radius: 12px;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(108, 99, 255, 0.5);
+}
+
+/* Botón mostrar/ocultar contraseña */
+.btn-toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  background: transparent;
+  border: none;
+  color: #555;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #444;
+  font-weight: 400;
+}

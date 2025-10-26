@@ -1,13 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LayaoutComponent } from "./Templates/layaout-component/layaout-component";
+import { LayaoutComponent } from './Templates/layaout-component/layaout-component';
 
 @Component({
   selector: 'app-root',
-  imports: [ LayaoutComponent],
+  standalone: true,
+  imports: [RouterOutlet, LayaoutComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
-export class App {
+export class AppComponent {
   protected readonly title = signal('CompuTronica');
 }
