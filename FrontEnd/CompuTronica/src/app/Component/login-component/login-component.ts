@@ -56,11 +56,11 @@ export class LoginComponent {
         sessionStorage.setItem('usuario', JSON.stringify(response));
         sessionStorage.setItem('isLoggedIn', 'true');
 
-        // Redirigir según el tipo de usuario
+        //Redirigir según el tipo de usuario
         if (response.tipo === 'administrativo') {
           this.router.navigate(['/Usuarios']);
-        } else {
-          this.router.navigate(['/DashBoard']);
+         } else {
+           this.router.navigate(['/Dashboard']);
         }
       },
       error: (error) => {

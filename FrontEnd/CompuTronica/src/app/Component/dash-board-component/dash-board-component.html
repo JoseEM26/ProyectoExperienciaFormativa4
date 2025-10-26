@@ -1,1 +1,69 @@
-<p>dash-board-component works!</p>
+<div class="container py-4 dashboard-container">
+  <h2 class="text-center mb-4 fw-bold text-primary">
+    📊 Panel de Control
+  </h2>
+
+  <div class="row g-4">
+    <!-- Usuarios por Tipo -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center rounded-top-4">
+          <h5 class="mb-0">Usuarios por Tipo</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="graficoUsuarios"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usuarios por Estado -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-success text-white text-center rounded-top-4">
+          <h5 class="mb-0">Usuarios por Estado</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="usuariosEstadoChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asignaturas por Profesor -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-info text-white text-center rounded-top-4">
+          <h5 class="mb-0">Asignaturas por Profesor</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="graficoAsignaturas"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promedio por Asignatura -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-warning text-dark text-center rounded-top-4">
+          <h5 class="mb-0">Promedio por Asignatura</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="promedioAsignaturaChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promedio por Evaluación -->
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-danger text-white text-center rounded-top-4">
+          <h5 class="mb-0">Promedio por Evaluación</h5>
+        </div>
+        <div class="card-body">
+          <canvas id="promedioEvaluacionChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

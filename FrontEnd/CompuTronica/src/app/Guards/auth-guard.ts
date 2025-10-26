@@ -19,7 +19,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
 
   if (isLoggedIn) {
-    router.navigate(['/dashboard']);
+    router.navigate(['/Dashboard']);
     return false;
   }
   return true;

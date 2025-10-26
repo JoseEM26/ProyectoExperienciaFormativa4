@@ -7,7 +7,7 @@ export const authenticateGuardGuard: CanActivateFn = (route, state) => {
 
   // Si ya está logueado, redirigir al Dashboard
   if (isLoggedIn) {
-    router.navigate(['/DashBoard']);
+    router.navigate(['/Dashboard']);
     return false;
   }
 

@@ -66,7 +66,6 @@ public class UsuarioService {
                 return usuarioOpt;
             }
         }
-
         return Optional.empty();
     }
 }

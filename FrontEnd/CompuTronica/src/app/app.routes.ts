@@ -8,7 +8,7 @@ import { ChatComponent } from './Component/chat-component/chat-component';
 import { CalificacionesComponent } from './Component/calificaciones-component/calificaciones-component';
 import { authGuard } from './Guards/auth-guard';
 import { authenticateGuardGuard } from './Guards/authenticateGuardGuard';
-import { DashBoardCOmponent } from './Component/dash-board-component/dash-board-component';
+import { DashBoardComponent } from './Component/dash-board-component/dash-board-component';
 import { LayaoutComponent } from './Templates/layaout-component/layaout-component';
 
 export const routes: Routes = [
@@ -22,7 +22,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'Dashboard', pathMatch: 'full' },
-      { path: 'Dashboard', component: DashBoardCOmponent, data: { title: 'Dashboard' } },
+      { path: 'Dashboard', component: DashBoardComponent, data: { title: 'Dashboard' } },
       { path: 'Asignatura', component: AsignaturasComponent, data: { title: 'Asignaturas' } },
       { path: 'Calificaciones', component: CalificacionesComponent, data: { title: 'Calificaciones' } },
       { path: 'Usuarios', component: UsuariosComponent, data: { title: 'Usuarios' } },

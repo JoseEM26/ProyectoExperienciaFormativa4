@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "asignaturas")
+
 public class Asignaturas {
 
     @Id

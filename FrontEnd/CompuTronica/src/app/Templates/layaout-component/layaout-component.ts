@@ -14,7 +14,7 @@ userName = 'Juan Pérez';
   sidebarOpen = true;
 
   menuItems = [
-    { label: 'DashBoard', route: '/DashBoard', icon: 'bi-speedometer2' },
+    { label: 'Dashboard', route: '/Dashboard', icon: 'bi-speedometer2' },
     { label: 'Usuarios', route: '/Usuarios', icon: 'bi-people' },
     { label: 'Asignatura', route: '/Asignatura', icon: 'bi-people' },
     { label: 'Calificaciones', route: '/Calificaciones', icon: 'bi-people' },
