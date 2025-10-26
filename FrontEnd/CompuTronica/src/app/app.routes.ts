@@ -6,11 +6,13 @@ import { UsuariosComponent } from './Component/usuarios-component/usuarios-compo
 import { AsignaturasComponent } from './Component/asignatura-component/asignatura-component';
 import { RegistroUsuario } from './Component/usuario-form-component/usuario-form';
 import { ChatComponent } from './Component/chat-component/chat-component';
+import { CalificacionesComponent } from './Component/calificaciones-component/calificaciones-component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/DashBoard', pathMatch: 'full' },
   { path: 'DashBoard', component: DashBoardCOmponent },
   { path: 'Asignatura', component: AsignaturasComponent },
+  { path: 'Calificaciones', component: CalificacionesComponent},
   { path: 'Usuarios', component: UsuariosComponent },
   { path: 'Chat', component: ChatComponent },
   { path: 'usuarioForm', component: RegistroUsuario },

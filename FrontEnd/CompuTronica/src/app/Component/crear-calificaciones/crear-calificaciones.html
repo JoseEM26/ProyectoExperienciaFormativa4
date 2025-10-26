@@ -1,0 +1,54 @@
+<div class="modal-container">
+  <h2>{{ calificacion.id ? 'Editar Calificación' : 'Nueva Calificación' }}</h2>
+
+  <form (ngSubmit)="onGuardar()">
+
+    <!-- Estudiante -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estudiante</mat-label>
+      <mat-select [(ngModel)]="selectedEstudiante"
+                  name="estudiante"
+                  required
+                  (selectionChange)="onEstudianteChange()"
+                  [compareWith]="compareUsuarios">
+        <mat-option *ngFor="let e of estudiantes" [value]="e">
+          {{ e.nombre }} {{ e.apellido }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Asignatura -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Asignatura</mat-label>
+      <mat-select [(ngModel)]="selectedAsignatura"
+                  name="asignatura"
+                  required
+                  (selectionChange)="onAsignaturaChange()"
+                  [compareWith]="compareAsignaturas">
+        <mat-option *ngFor="let a of asignaturas" [value]="a">
+          {{ a.nombre }} ({{ a.codigoAsignatura }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Evaluación -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Evaluación</mat-label>
+      <mat-select [(ngModel)]="calificacion.evaluacion" name="evaluacion" required>
+        <mat-option *ngFor="let ev of evaluaciones" [value]="ev">{{ ev }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Nota -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nota</mat-label>
+      <input matInput type="number" [(ngModel)]="calificacion.nota" name="nota" min="0" max="20" required>
+    </mat-form-field>
+
+    <!-- Botones -->
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit">{{ calificacion.id ? 'Actualizar' : 'Crear' }}</button>
+      <button mat-raised-button color="warn" type="button" (click)="onCancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
